@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Confirmed | AppliFix</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f1117, #1e2536);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s ease-in;
+            color: white;
+        }
+
+        .confirmation-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        h2 {
+            color: #56CCF2;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .info p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #e2e2e2;
+        }
+
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #1c1f2b, #3f4c6b);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+            animation: wiggle 0.5s ease-in-out;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes wiggle {
+            0% { transform: rotate(0deg) scale(1.05); }
+            25% { transform: rotate(3deg) scale(1.06); }
+            50% { transform: rotate(-3deg) scale(1.06); }
+            75% { transform: rotate(2deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1.05); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(86, 204, 242, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(86, 204, 242, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(86, 204, 242, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h2>✅ Request Confirmed!</h2>
+        <div class="info">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Appliance:</strong> {{ appliance }}</p>
+            <p><strong>Issue:</strong> {{ problem }}</p>
+            <p><strong>Assigned Agent:</strong> {{ agent['Name'] }} ({{ agent['Contact'] }})</p>
+	    <p><strong>The agent will reach at your service in 48 hours, stay in touch with agent for any query..</p>
+        </div>
+
+        <div class="button-group">
+            <a class="action-btn" href="{{ url_for('download_receipt', filename=pdf_filename) }}">📄 Download Receipt</a>
+            <a class="action-btn" href="/feedback?name={{ name }}&agent={{ agent['Name'] }}">💬 Give Feedback</a>
+            <a class="action-btn" href="/index">⬅️ Submit Another Request</a>
+        </div>
+    </div>
+</body>
+</html>

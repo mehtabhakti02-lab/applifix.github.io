@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AppliFix | Service Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f1117, #1e2536);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s ease-in;
+            color: white;
+        }
+
+        .form-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #56CCF2;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: 500;
+            color: #e2e2e2;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            color: white;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #ccc;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 5px #56CCF2;
+        }
+
+        .submit-btn-dark {
+            margin-top: 30px;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #1c1f2b, #3f4c6b);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-btn-dark:hover {
+            background: linear-gradient(135deg, #23252f, #58607a);
+            transform: scale(1.05);
+            animation: wiggle 0.5s ease-in-out;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes wiggle {
+            0% { transform: rotate(0deg) scale(1.05); }
+            25% { transform: rotate(3deg) scale(1.06); }
+            50% { transform: rotate(-3deg) scale(1.06); }
+            75% { transform: rotate(2deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-box">
+    <h1>🛠️ Request a Service</h1> 
+    <form action="/request" method="POST">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="address">Your Address:</label>
+        <input type="text" id="address" name="address" placeholder="Full address" required>
+
+        <label for="contact">Contact Number:</label>
+        <input type="text" id="contact" name="contact" placeholder="10-digit number" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="appliance">Appliance Type:</label>
+        <input type="text" id="appliance" name="appliance" placeholder="e.g. Fan, AC, Microwave" required>
+
+        <label for="problem">Describe the Problem:</label>
+        <textarea id="problem" name="problem" rows="4" placeholder="Mention what's not working..." required></textarea>
+	<p><h4> **The agent will charge accordingly to the problem and task at the time of visit...</p></h4>
+        <button type="submit" class="submit-btn-dark">Complaint noted!</button>
+    </form>
+</div>
+
+</body>
+</html>

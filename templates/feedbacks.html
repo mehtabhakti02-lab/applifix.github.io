@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Feedback | MySmartDwell</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f1117, #1e2536);
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            color: #56CCF2;
+            margin-bottom: 30px;
+        }
+
+        .feedback-container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .feedback {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .feedback p {
+            margin: 6px 0;
+            font-size: 14px;
+            color: #e0e0e0;
+        }
+
+        .feedback strong {
+            color: #56CCF2;
+        }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #1c1f2b, #3f4c6b);
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            animation: wiggle 0.5s ease-in-out;
+        }
+
+	.button-group {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.action-btn {
+    background: linear-gradient(135deg, #1c1f2b, #3f4c6b);
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+    animation: wiggle 0.5s ease-in-out;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg) scale(1.05); }
+    25% { transform: rotate(3deg) scale(1.06); }
+    50% { transform: rotate(-3deg) scale(1.06); }
+    75% { transform: rotate(2deg) scale(1.05); }
+    100% { transform: rotate(0deg) scale(1.05); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(86, 204, 242, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(86, 204, 242, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(86, 204, 242, 0); }
+}
+
+
+        @keyframes wiggle {
+            0% { transform: rotate(0deg) scale(1.05); }
+            25% { transform: rotate(3deg) scale(1.06); }
+            50% { transform: rotate(-3deg) scale(1.06); }
+            75% { transform: rotate(2deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1.05); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(86, 204, 242, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(86, 204, 242, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(86, 204, 242, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>📣 Customer Feedback</h2>
+
+    <div class="feedback-container">
+        {% if feedbacks %}
+            {% for fb in feedbacks %}
+                <div class="feedback">
+                    <p><strong>{{ fb.name }}</strong> (Rating: {{ fb.rating }}/5)</p>
+                    <p>Agent: {{ fb.agent }}</p>
+                    <p>“{{ fb.review }}”</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align:center; color:#aaa;">No feedback received yet.</p>
+        {% endif %}
+    </div>
+	<div class="button-group" style="text-align: center; margin-top: 30px;">
+    		<a href="/" class="action-btn">⬅ Back to Home</a>
+	</div>
+
+
+</body>
+</html>

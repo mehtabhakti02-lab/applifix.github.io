@@ -1,0 +1,77 @@
+/* Dark welcome body */
+.welcome-body {
+    background: linear-gradient(135deg, #0f1117, #1e2536);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: white;
+}
+
+/* Glassy darker card */
+.welcome-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 85%;
+    max-width: 650px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+    color: #e2e2e2;
+}
+
+.welcome-card h1 span {
+    color: #56CCF2;
+}
+
+/* Dark version of your fun button */
+.get-started-btn-dark {
+    display: inline-block;
+    background: linear-gradient(135deg, #1c1f2b, #3f4c6b);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.get-started-btn-dark:hover {
+    transform: scale(1.05);
+    animation: wiggle 0.5s ease-in-out;
+}
+
+/* Reuse pulse and wiggle animations */
+@keyframes wiggle {
+    0% { transform: rotate(0deg) scale(1.05); }
+    25% { transform: rotate(3deg) scale(1.06); }
+    50% { transform: rotate(-3deg) scale(1.06); }
+    75% { transform: rotate(2deg) scale(1.05); }
+    100% { transform: rotate(0deg) scale(1.05); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(86, 204, 242, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(86, 204, 242, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(86, 204, 242, 0); }
+}
+
+/* Smooth entry animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
